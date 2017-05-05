@@ -1,0 +1,6 @@
+<% if @collection.errors.any? %>
+  $('div.errors').html('<%= render partial: "record_errors", locals: { record: @collection }%>');
+<% else %>
+  $(".collections-listing").html("<%= j render partial: 'collections_listing', locals: { collections: @collections } %>")
+  $('#add-form').modal('hide')
+<% end %>

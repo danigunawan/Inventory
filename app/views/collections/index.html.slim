@@ -1,0 +1,7 @@
+= link_to 'Add Collection', new_collection_path, remote: true, id: 'add-form-link', class: 'btn btn-primary', data: { toggle: 'modal', target: '#add-form', backdrop: 'static', keyboard: false }
+.collections-listing
+  - if @collections.present?
+    = render partial: 'collections_listing', locals: { collections: @collections }
+  - else
+    span.empty-records No Collections
+#add-form.modal.fade role='dialog'

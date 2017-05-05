@@ -1,0 +1,11 @@
+- collections.each do |collection|
+  .col-md-3.col-lg-4.col-sm-6.col-xs-6
+    .panel.panel-default
+      .panel-title
+        span.collection-record.pull-left
+          = collection.name
+        .clearfix
+      .panel-content    
+        - collection.items.each do |item|
+          = item.name
+          br
