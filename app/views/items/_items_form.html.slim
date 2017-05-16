@@ -1,14 +1,20 @@
 .modal-dialog
-  = form_for @collection, remote: true do |f|
+  = form_for @item, remote: true do |f|
     .modal-content
       .modal-header
         button.close type='button' data-dismiss='modal' &times;
-        h4.modal-title Collection Form
+        h4.modal-title Item Form
       .modal-body
         div.errors
         .form-group
           = f.label :name
           = f.text_field :name, class: 'form-control'
+        .form-group
+          = f.label :quantity
+          = f.number_field :quantity, class: 'form-control', step: 1, min: 0
+        .form-group
+          = f.label :collection
+          = f.collection_select :collection_id, Collection.all, :id, :name, {}, { class: 'form-control' }      
       .modal-footer
         = f.submit "Save", class: 'btn btn-primary'
         button.btn.btn-default data-dismiss='modal' Close

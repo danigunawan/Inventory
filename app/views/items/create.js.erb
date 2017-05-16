@@ -1,0 +1,6 @@
+<% if @item.errors.any? %>
+  $('div.errors').html('<%= render partial: "layouts/shared/record_errors", locals: { record: @item }%>');
+<% else %>
+  $(".items-listing").html("<%= j render partial: 'items_listing', locals: { items: @items } %>")
+  $('#add-form').modal('hide')
+<% end %>

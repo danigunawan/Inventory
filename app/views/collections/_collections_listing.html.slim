@@ -1,11 +1,25 @@
 - collections.each do |collection|
   .col-md-3.col-lg-4.col-sm-6.col-xs-6
     .panel.panel-default
-      .panel-title
+      .panel-heading
         span.collection-record.pull-left
           = collection.name
-        .clearfix
+        span.actions.pull-right
+          = link_to collection_path(id: collection.id), class: 'show-collection' do
+            i.fa.fa-eye
+            = " "
+          = link_to edit_collection_path(id: collection.id), class: 'edit-collection', remote: true, data: { toggle: 'modal', target: '#add-form', backdrop: 'static', keyboard: false } do
+            i.fa.fa-pencil
+            = " "
+          = link_to collection_path(id: collection.id), remote: true, method: :delete, class: 'delete-collection', data: {confirm: "Are you sure you want to delete this?"} do
+            i.fa.fa-ban
+            = " "
+        .clearfix  
       .panel-content    
-        - collection.items.each do |item|
-          = item.name
-          br
+        - if collection.items.present?
+          .list-group
+            - collection.items.each do |item|
+              .list-group-item
+                = item.name    
+            .list-group-item
+              = link_to 'Show More >>', collection_path(id: collection.id), class: 'show-collection'

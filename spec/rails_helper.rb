@@ -48,6 +48,7 @@ end
 
 Capybara::Webkit.configure do |config|
   config.debug = true
+  config.allow_url("fonts.googleapis.com")
 end
 
 Shoulda::Matchers.configure do |config|

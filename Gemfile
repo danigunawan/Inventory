@@ -37,6 +37,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'slim'
 gem 'bootstrap-sass'
 gem 'bootswatch-rails'
+gem "font-awesome-rails"
+gem 'ransack'
+gem 'kaminari'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,6 +50,7 @@ group :development, :test do
   gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
   gem "factory_girl_rails", "~> 4.0"
   gem 'capybara-webkit'
+  gem 'launchy'
 end
 
 group :development do

@@ -1,7 +1,17 @@
-= link_to 'Add Collection', new_collection_path, remote: true, id: 'add-form-link', class: 'btn btn-primary', data: { toggle: 'modal', target: '#add-form', backdrop: 'static', keyboard: false }
-.collections-listing
+= link_to 'Add Collection', new_collection_path, remote: true, id: 'add-form-link', class: 'btn btn-primary pull-right', data: { toggle: 'modal', target: '#add-form', backdrop: 'static', keyboard: false }
+.clearfix 
+br
+.search-area
+  .input-group
+    span.input-group-addon
+      i.fa.fa-search
+    input.form-control#search-query
+    .input-group-btn
+      button.btn.btn-primary type='submit' Search
+br
+
+.collections-listing.padded-content
   - if @collections.present?
     = render partial: 'collections_listing', locals: { collections: @collections }
   - else
-    span.empty-records No Collections
-#add-form.modal.fade role='dialog'
+    = render partial: 'layouts/shared/empty_records', locals: { record_class: Collection }

@@ -1,0 +1,5 @@
+<% if @items.present? %>
+$(".items-listing").html("<%= j render partial: 'items_listing', locals: { items: @items } %>")
+<% else %>
+$(".items-listing").html("<%= j render partial: 'layouts/shared/empty_records', locals: { record_class: Item } %>")
+<% end %>

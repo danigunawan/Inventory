@@ -14,10 +14,46 @@ RSpec.describe CollectionsController, type: :controller do
   end
 
   describe "GET new" do
-    it "creates a new collection for testing" do
+    it "returns a new collection for creating" do
       get :new, xhr: true
       expect(assigns(:collection).class).to eq(Collection)
       expect(assigns(:collection).new_record?).to be_truthy
+    end
+  end
+
+  describe "GET show" do
+    let!(:collection) { FactoryGirl.create(:collection) }
+
+    it "returns selected collection for showing" do
+      get :show, params: {id: collection.id}
+      expect(assigns(:collection).class).to eq(Collection)
+      expect(assigns(:collection).id).to eq(collection.id)
+    end
+  end
+
+  describe "GET edit" do
+    let!(:collection) { FactoryGirl.create(:collection) }
+
+    it "returns an existing collection for editing" do
+      get :edit, xhr: true, params: {id: collection.id}
+      expect(assigns(:collection).class).to eq(Collection)
+    end
+  end
+
+  describe "PUT update" do
+    it "updates an existing collection" do
+      get :new, xhr: true
+      expect(assigns(:collection).class).to eq(Collection)
+    end
+  end
+
+  describe "DELETE destroy" do
+    let!(:collection) { FactoryGirl.create(:collection) }
+
+    it "destroys a collection" do
+      delete :destroy, xhr: true, params: {id: collection.id}
+      expect(assigns(:collection).class).to eq(Collection)
+      expect(Collection.exists?(assigns(:collection).id)).to be_falsey
     end
   end
 end

@@ -6,6 +6,12 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render partial: 'layouts/shared/navbar'
-    .container
-      = yield
+    .row
+      = render partial: 'layouts/shared/navbar'
+    .row
+      .col-md-3.col-lg-3
+        = render partial: 'layouts/shared/sidebar'
+      .col-md-9.col-lg-9.padded-content
+        .padded-content            
+          = yield
+          #add-form.modal.fade role='dialog'
