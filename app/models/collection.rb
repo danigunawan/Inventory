@@ -1,5 +1,5 @@
 class Collection < ApplicationRecord
-  has_many :items
+  has_many :items, dependent: :destroy
   validates :name, presence: true
 
   def any_low_stock_items?
